@@ -1,0 +1,33 @@
+<?php if (Mage::registry('insurance_configuration')):?>
+    <br>
+    <br>
+    <h4><?php echo $this->__('We recomended U-PIC Parcel Insurance') ?></h4>
+    <?php if(Mage::registry('country_status')):?>
+        <div class="insurance">
+                <strong>100%</strong> protection  against loss or damage for only
+            <span id="insurance-amount">
+                <?php
+                    echo  Mage::helper('core')->currency(QS_Fee_Model_Fee::getFee(), true, false);
+                ?>
+            </span>
+            .
+            <a href="" onclick="infoUsePopup.showPopupBox();return false;">Why?</a>
+        </div>
+        <?php
+            if(!Mage::registry('insurance_as_default')):
+        ?>
+        <div>
+            <div id="upic-logo"></div>
+            <input type="checkbox" id="insurance-status"/>
+            Yes, I'd like to purchase U-PIC Parcel Insurance and I agree with the
+            <a href="" onclick="infoRulesPopup.showPopupBox();return false;">Coverage Rules</a>
+        </div>
+        <? endif?>
+        <? else: ?>
+        Your country not avalable for insurance. Please choice another country, which not in unavalible list!
+    <? endif?>
+<? endif?>
+
+
+
+

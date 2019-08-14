@@ -1,0 +1,7 @@
+<div id="totals-for-day" class="totals-for-day">
+    <h5>Insurance report for day:</h5>
+    <br/>
+    <h5>Totals order count: <?php echo $this->getOrdersCount();?></h5>
+    <br/>
+    <h5>Totals insurance amount: <?php echo Mage::helper('core')->currency($this->getTotalInsurance(), true, false);?></h5>
+</div>

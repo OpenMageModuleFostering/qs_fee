@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <QS_Fee>
+            <active>true</active>
+            <codePool>community</codePool>
+        </QS_Fee>
+    </modules>
+</config> 

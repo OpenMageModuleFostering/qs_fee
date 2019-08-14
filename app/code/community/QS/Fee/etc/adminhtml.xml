@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <insurance_report translate="title" module="fee">
+            <title>U-PIC Insurance</title>
+            <sort_order>15</sort_order>
+            <children>
+                <example translate="title" module="fee">
+                    <title>Insurance Report</title>
+                    <sort_order>1</sort_order>
+                    <action>adminhtml/fee/</action>
+                </example>
+            </children>
+        </insurance_report>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <upic>
+                                        <title>U-PIC Parcel Insurance</title> <!-- Used in resources tree -->
+                                    </upic>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

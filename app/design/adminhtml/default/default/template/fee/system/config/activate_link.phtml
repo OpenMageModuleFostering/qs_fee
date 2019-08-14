@@ -1,0 +1,96 @@
+<div id="activate-popup" style="display: none;">
+    <div id="activate-popup-container">
+        <div id="activate-popup-header">
+            <h5>Send activation email to U-PIC company</h5>
+        </div>
+        <form name="activate-form" id="activate-form" method="post">
+            <label for="from">From *</label>
+            &nbsp;&nbsp;&nbsp;
+            <input type="text" id="from" name="from" value="<?php echo $this->getAdminEmailAdress();?>" class="required-entry validate-email"/>
+            <br>
+            <br>
+            <label for="to">To *</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" id="to" name="to" value="<?php echo $this->getUpicEmailAdress();?>" class="required-entry validate-email" readonly="readonly"/>
+            <br>
+            <br>
+            <label  for="message">
+                <?php echo $this->__('Content') ?>  <span>*</span></label>
+                <br>
+                <br>
+            <p><textarea id="message" rows="10" cols="86" name="message" class="required-entry">Please send me activation code and policy number for U-PIC Insurance</textarea></p>
+            <input class="form-button" type="submit" id="send" onclick="if(customValidate()){activatePopup.activate()};" value="send"/>
+        </form>
+    </div>
+</div>
+
+<a href="" onclick="activatePopup.showPopupBox();return false;">Register</a>
+
+<div id="upic-logo">
+    <img src="<?php echo $this->getSkinUrl('images/label.png')?>" alt="U-PIC logo"/>
+</div>
+
+
+<script type="text/javascript">
+
+    function customValidate(){
+        if(Validation.validate('to') &&Validation.validate('from') && Validation.validate('message')){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    var activate_Popup = Class.create();
+    activate_Popup.prototype = {
+        initialize: function() {
+            this.action =  "<?php echo $this->getUrl('faq/index/help/') ?>";
+            this.currentcategory = 0;
+            this.Popup = new Popupbox('activate-popup', false, 'activate', {
+                overlayColor: '#ffffff',
+                closeText: 'close',
+                overlayOpacity: 0.75,
+                overlayDuration: 0.2,
+                marginTop: '50',
+                width: '481px',
+                showShadow: false
+            });
+        },
+        showPopupBox: function(){
+            if (!$('to').value){
+                alert('Please set E-mail adress U-PIC company in config.xml');
+            }
+            this.Popup.showPopup();
+        },
+        activate: function(){
+            new Ajax.Request('<?php echo $this->getAjaxCheckUrl() ?>', {
+                method: 'post',
+                parameters:'message='+$('message').value+'&'+'from='+ $('from').value+'&'+'to='+$('to').value,
+                onSuccess: function(transport){
+                    if (transport.responseText){
+                        alert('Email was send successfully!')
+                    }
+                },
+                onFailure: function(){
+                    alert('Fail!!!');
+                }
+            });
+        }
+    }
+
+    var activatePopup,status;
+    $(document).observe('dom:loaded', function() {
+
+        activatePopup = new activate_Popup();
+        status = <?php if (Mage::getStoreConfig('upic/general/activation_code')!= '' &&
+                           Mage::getStoreConfig('upic/general/policy_number')!='' ):?>
+                               1;
+                          <?php else: ?>
+                                0;
+                 <?php endif;?>
+        if(!status){
+            activatePopup.showPopupBox();
+        }
+    })
+
+</script>

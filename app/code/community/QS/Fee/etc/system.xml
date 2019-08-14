@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <upic translate="label" module="adminhtml">
+            <label>U-PIC Parcel Insurance</label>
+            <tab>sales</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label comment">
+                    <label>Insurance Checkout</label>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment><![CDATA[<strong>Help information:</strong><br />For setup acount you must send activation email to company U-Pic and <br /> fills inputs the Policy number and the Activation Code!]]></comment>
+                    <fields>
+                        <policy_number translate="label comment">
+                            <label>Policy number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </policy_number>
+                        <activation_code translate="label comment">
+                            <backend_model>fee/validation_code</backend_model>
+                            <label>Activation Code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </activation_code>
+                        <insurance_as_default translate="label comment">
+                            <label>Use insurance</label>
+                            <comment>Use insurance to order as default</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </insurance_as_default>
+                        <check translate="label">
+                            <label>Activate your account</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>fee/adminhtml_system_config_form_activate</frontend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </check>
+                    </fields>
+                </general>
+            </groups>
+        </upic>
+        <trans_email translate="label" module="adminhtml">
+            <groups>
+                <ident_dropship translate="label">
+                    <label>Dropship Email Contact</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <dropship_name translate="label">
+                            <label>Sender Name</label>
+                            <frontend_type>text</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_email_sender</backend_model>
+                            <validate>validate-emailSender</validate>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </dropship_name>
+                        <dropship_email translate="label">
+                            <label>Sender Email</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-email</validate>
+                            <backend_model>adminhtml/system_config_backend_email_address</backend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </dropship_email>
+                    </fields>
+                </ident_dropship>
+            </groups>
+        </trans_email>
+    </sections>
+</config>
