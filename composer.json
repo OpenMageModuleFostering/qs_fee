@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/QS_Fee",
+    "name": "openmage-module-fostering\/qs_fee",
     "type": "magento-module",
-    "license": "OSL",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "Allows you to offer discounted parcel insurance to your customers ",
     "authors": [
